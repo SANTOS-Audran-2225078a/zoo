@@ -1,6 +1,6 @@
-package td4;
+package lasauce;
 
-public class phénix {
+public class sirènes {
 	 private String nomEspece;
 	    private char sexe;
 	    private double poids;
@@ -10,7 +10,7 @@ public class phénix {
 	    private boolean indicsommeil;
 	    private boolean indicsante;
 
-	        public phénix(String nomEspece, char sexe, double poids, double taille, int age) {
+	        public sirènes(String nomEspece, char sexe, double poids, double taille, int age) {
 	        this.nomEspece = nomEspece;
 	        this.sexe = sexe;
 	        this.poids = poids;
@@ -20,5 +20,10 @@ public class phénix {
 	        this.indicsommeil = false;
 	        this.indicsante = true;
 	    }
+
+	 @override
+    public void Nager() {
+        System.out.println(super.getName() + "nage" );
+    }
 
 }

@@ -1,4 +1,4 @@
-package td4;
+package lasauce;
 
 public class mégalodons {
     private String nom;
@@ -41,5 +41,9 @@ public class mégalodons {
     }
     public void pondre() {
     	
+    }
+
+    public void Nager() {
+        System.out.println(super.getName() + "nage" );
     }
     }

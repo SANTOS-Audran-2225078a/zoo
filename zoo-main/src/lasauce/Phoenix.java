@@ -1,4 +1,4 @@
-package td4;
+package lasauce;
 
 public class phénix {
 	 private String nomEspece;

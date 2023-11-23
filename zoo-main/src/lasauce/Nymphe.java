@@ -1,6 +1,6 @@
-package td4;
+package lasauce;
 
-public class sirènes {
+public class nymphes {
 	 private String nomEspece;
 	    private char sexe;
 	    private double poids;
@@ -10,7 +10,7 @@ public class sirènes {
 	    private boolean indicsommeil;
 	    private boolean indicsante;
 
-	        public sirènes(String nomEspece, char sexe, double poids, double taille, int age) {
+	        public nymphes(String nomEspece, char sexe, double poids, double taille, int age) {
 	        this.nomEspece = nomEspece;
 	        this.sexe = sexe;
 	        this.poids = poids;
@@ -20,10 +20,5 @@ public class sirènes {
 	        this.indicsommeil = false;
 	        this.indicsante = true;
 	    }
-
-	 @override
-    public void Nager() {
-        System.out.println(super.getName() + "nage" );
-    }
 
 }

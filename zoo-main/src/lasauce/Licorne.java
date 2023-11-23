@@ -1,4 +1,4 @@
-package td4;
+package lasauce;
 
 public class Licorne {
     private String nomEspece;

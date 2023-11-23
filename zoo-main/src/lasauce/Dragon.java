@@ -1,6 +1,6 @@
-package td4;
+package lasauce;
 
-public class krakens {
+public class dragons {
     private String nom;
     private char sexe;
     private double poids;
@@ -10,7 +10,7 @@ public class krakens {
     private boolean indicsommeil;
     private boolean indicsante;
 
-        public krakens(String nom, char sexe, double poids, double taille, int age) {
+        public dragons(String nom, char sexe, double poids, double taille, int age) {
         this.nom = nom;
         this.sexe = sexe;
         this.poids = poids;
@@ -36,12 +36,21 @@ public class krakens {
     public void vieillir() {
     	
     }
-    public void nager() {
+    public void courrir() {
     	
     }
     public void pondre() {
     	
     }
+    
+    public void Voler() {
+        System.out.println(super.getName() + "Vole" );
+    }
+
+    public void Courir() {
+        System.out.println(super.getName() + "cour" );
+    }
+
     public void Nager() {
         System.out.println(super.getName() + "nage" );
     }
