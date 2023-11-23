@@ -1,28 +1,104 @@
 package lasauce;
 
-public class phénix {
-	 private String nomEspece;
-	    private char sexe;
-	    private double poids;
-	    private double taille;
-	    private int age;
-	    private boolean indicfaim; 
-	    private boolean indicsommeil;
-	    private boolean indicsante;
+public class Phoenix {
+	private String nomEspece;
+	private String sexe;
+	private double poids;
+	private double taille;
+	private int age;
+	private boolean faim;
+	private boolean dort;
+	private int sante;
+	private boolean voler;
+	private boolean pond;
+	private boolean renaitre;
 
-	        public phénix(String nomEspece, char sexe, double poids, double taille, int age) {
-	        this.nomEspece = nomEspece;
-	        this.sexe = sexe;
-	        this.poids = poids;
-	        this.taille = taille;
-	        this.age = age;
-	        this.indicfaim = false;
-	        this.indicsommeil = false;
-	        this.indicsante = true;
-	    }
 
-    public void Voler() {
-        System.out.println(super.getName() + "Vole" );
-    }
+	public Phoenix(String nomEspece, String sexe, double poids, double taille) {
+		this.nomEspece = nomEspece;
+		this.sexe = sexe;
+		this.poids = poids;
+		this.taille = taille;
+		this.age = age;
+		this.faim = false;
+		this.dort = false;
+		this.sante = 100;
+		this.voler = voler;
+		this.pond = pond;
+		this.renaitre = renaitre;
+	}
 
+
+	public void manger() {
+		if (dort==false) {
+			System.out.println(nomEspece + "Est entrain de manger");
+		}
+		else if (dort==true) {
+			System.out.println(nomEspece + "ne peut pas manger pour le moment");
+		}
+
+	}
+
+
+
+	public void son() {
+		System.out.println(nomEspece + "Est entrain de rugir");
+	}
+
+	public void soin() {
+		if (sante !=100) {
+			System.out.println(nomEspece + "Est entrain de se soigner");
+		}
+		else if (sante ==100) {
+			System.out.println(nomEspece + "Ne peut pas soigne pas ");
+
+		}
+
+	}
+
+	public void dormir() {
+		if (dort==true) {
+			System.out.println(nomEspece + "Est entrain de dormir");
+		}
+		else if (dort == false) {
+			System.out.println(nomEspece + "Ne dort pas");
+		}
+	}
+	public void vieillir() {
+		System.out.println(nomEspece + "Vieillis");
+
+	}
+
+
+
+	public void pond() {
+		if (pond == true) {
+			System.out.println(nomEspece + "Est entrain de pondre");
+		}
+		else if (pond == false) {
+			System.out.println(nomEspece + "N'est pas entrain de pondre");
+		}
+	}
+
+	public void renaitre(){
+		if (renaitre == true) {
+			System.out.println(nomEspece + "Est entrain de renaitre");
+		}
+		else if (renaitre == false) {
+			System.out.println(nomEspece + "Ne peut actuellement pas renaitre");
+		}
+	}
+
+	public void voler() {
+		if (voler==true) {
+			System.out.println(nomEspece + "Est entrain de voler");
+		}
+		else if (voler==false) {
+			System.out.println(nomEspece + "Ne vole pas");
+		}
+	}
+
+
+
+}
 }

@@ -10,7 +10,7 @@ public class Licorne {
     private boolean dort;
     private int sante;
     private boolean courrir;
-    private boolean pond;
+    private boolean accoucher;
 
    
     public Licorne(String nomEspece, String sexe, double poids, double taille, int age) {
@@ -23,7 +23,7 @@ public class Licorne {
         this.dort = false;
         this.sante = 100;
         this.courrir = courrir;
-        this.pond = pond;
+        this.accoucher = accoucher;
     }
 
 
@@ -48,7 +48,7 @@ public class Licorne {
 		System.out.println(nomEspece + "Est entrain de se soigner");
 		}
 		else if (sante ==100) {
-			System.out.println(nomEspece + "Ne se soigne pas ");
+			System.out.println(nomEspece + "Ne peut pas soigne pas ");
 		
 		}
 		
@@ -77,12 +77,12 @@ public class Licorne {
 	}
 	
 
-	public void pond() {
-		if (pond == true) {
-			System.out.println(nomEspece + "Est entrain de pondre");
+	public void accoucher() {
+		if (accoucher == true) {
+			System.out.println(nomEspece + "Est entrain d'accouché");
 		}
-			else if (pond == false) {
-				System.out.println(nomEspece + "N'est pas entrain de pondre");
+			else if (accoucher == false) {
+				System.out.println(nomEspece + "N'est pas entrain d'accouché'");
 			}
 		}
 		
