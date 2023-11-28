@@ -87,5 +87,105 @@ public class Megalodon {
     }
 
 
-}
+	public String getNomEspece() {
+		return nomEspece;
+	}
+
+
+	public void setNomEspece(String nomEspece) {
+		this.nomEspece = nomEspece;
+	}
+
+
+	public String getSexe() {
+		return sexe;
+	}
+
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
+
+
+	public double getPoids() {
+		return poids;
+	}
+
+
+	public void setPoids(double poids) {
+		this.poids = poids;
+	}
+
+
+	public double getTaille() {
+		return taille;
+	}
+
+
+	public void setTaille(double taille) {
+		this.taille = taille;
+	}
+
+
+	public int getAge() {
+		return age;
+	}
+
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+
+	public boolean isFaim() {
+		return faim;
+	}
+
+
+	public void setFaim(boolean faim) {
+		this.faim = faim;
+	}
+
+
+	public boolean isDort() {
+		return dort;
+	}
+
+
+	public void setDort(boolean dort) {
+		this.dort = dort;
+	}
+
+
+	public int getSante() {
+		return sante;
+	}
+
+
+	public void setSante(int sante) {
+		this.sante = sante;
+	}
+
+
+	public boolean isNager() {
+		return nager;
+	}
+
+
+	public void setNager(boolean nager) {
+		this.nager = nager;
+	}
+
+
+	public boolean isPond() {
+		return pond;
+	}
+
+
+	public void setPond(boolean pond) {
+		this.pond = pond;
+	}
+
+
+
 }
