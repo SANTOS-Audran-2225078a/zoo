@@ -34,13 +34,12 @@ public class Dragon {
 
 
     public void manger() {
-        if (dort==false) {
-            System.out.println(nomEspece + "Est entrain de manger");
+        if (sante < 95) {
+            sante += 5;
+            System.out.println(nomEspece + " mange et gagne de la vie. ");
+        } else {
+            System.out.println(nomEspece + "ne peut pas manger car sa santé est déjà au maximum. ");
         }
-        else if (dort==true) {
-            System.out.println(nomEspece + "ne peut pas manger pour le moment");
-        }
-
     }
 
 
@@ -61,18 +60,27 @@ public class Dragon {
     }
 
     public void dormir() {
-        if (dort==true) {
-            System.out.println(nomEspece + "Est entrain de dormir");
+        if (sante < 20) {
+            System.out.println(nomEspece + " est très faible et dort automatiquement pour récupérer.");
         }
-        else if (dort == false) {
-            System.out.println(nomEspece + "Ne dort pas");
+
+        else if (sante < 100) {
+            System.out.println(nomEspece + " est entrain de dormir.");
+        }
+
+        else {
+            System.out.println(nomEspece + " ne dort pas car sa santé est déjà au maximum.");
         }
     }
+
+    
+    
     public void vieillir() {
         age++;
         System.out.println((nomEspece + "Vieillis")++i);
 
     }
+
 
     public void courrir() {
         if (courrir==true) {
