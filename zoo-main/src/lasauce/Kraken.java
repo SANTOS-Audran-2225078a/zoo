@@ -64,7 +64,8 @@ public class Kraken {
         }
     }
     public void vieillir() {
-        System.out.println(nomEspece + "Vieillis");
+        age++;
+        System.out.println((nomEspece + "Vieillis")++i);
 
     }
 

@@ -62,10 +62,11 @@ public class Nymphe {
 			System.out.println(nomEspece + "Ne dort pas");
 		}
 	}
-	public void vieillir() {
-		System.out.println(nomEspece + "Vieillis");
+	 public void vieillir() {
+        age++;
+        System.out.println((nomEspece + "Vieillis")++i);
 
-	}
+    }
 
 
 

@@ -65,7 +65,8 @@ public class Lycanthrope {
         }
     }
     public void vieillir() {
-        System.out.println(nomEspece + "Vieillis");
+        age++;
+        System.out.println((nomEspece + "Vieillis")++i);
 
     }
 
