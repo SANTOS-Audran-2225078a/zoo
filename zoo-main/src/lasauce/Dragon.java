@@ -48,24 +48,23 @@ public class Dragon {
         System.out.println(nomEspece + "Est entrain de rugir");
     }
 
+
     public void soin() {
-        if (sante !=100) {
-            System.out.println(nomEspece + "Est entrain de se soigner");
+        if (sante < 100) {
+            sante += 10;
+            System.out.println(nomEspece + " mange et gagne de la vie. ");
+        } else {
+            System.out.println(nomEspece + "ne peut pas manger car sa santé est déjà au maximum. ");
         }
-        else if (sante ==100) {
-            System.out.println(nomEspece + "Ne peut pas soigne pas ");
-
-        }
-
     }
 
     public void dormir() {
         if (sante < 20) {
-            System.out.println(nomEspece + " est très faible et dort automatiquement pour récupérer.");
+            System.out.println(nomEspece + " est très faible et dort automatiquement pour récupérer. ");
         }
 
         else if (sante < 100) {
-            System.out.println(nomEspece + " est entrain de dormir.");
+            System.out.println(nomEspece + " est entrain de dormir. ");
         }
 
         else {
@@ -101,13 +100,9 @@ public class Dragon {
         }
     }
 
-    public void renaitre(){
-        if (renaitre == true) {
-            System.out.println(nomEspece + "Est entrain de renaitre");
-        }
-        else if (renaitre == false) {
-            System.out.println(nomEspece + "Ne peut actuellement pas renaitre");
-        }
+    public void renaitre(Dragon listeMort, Dragon listeVivant){
+    	listeVivant.add(listeMort[0]);
+    	Systeme.out.println(nomEspece + "Est entrain de renaitre")
     }
 
     public void nager() {
