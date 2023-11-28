@@ -35,28 +35,28 @@ public class game {
 			System.out.println("Vous êtes dans l'enclos du " + animal);
 			switch(animal) {
 			case "Dragon":
-				System.out.println("Veuillez faire une action entre : (mettre les actions )");
+				System.out.println("Veuillez faire une action entre : (manger, son, soin, dormir, vieillir, courrir, pond, renaitre, nager, voler,  )");
 				break;
 			case "Kraken":
-				System.out.println("Veuillez faire une action entre : (mettre les actions )");
+				System.out.println("Veuillez faire une action entre : (manger, son, soin, dormir, vieillir, pond, nager, )");
 				break;
 			case "Licorne":
-				System.out.println("Veuillez faire une action entre : (mettre les actions )");
+				System.out.println("Veuillez faire une action entre : (manger, son, soin, dormir, vieillir, courrir, accoucher )");
 				break;
 			case "Lycanthrope":
-				System.out.println("Veuillez faire une action entre : (mettre les actions )");
+				System.out.println("Veuillez faire une action entre : (manger, son, soin, dormir, vieillir, courrir, accoucher )");
 				break;
 			case "Megalodon":
-				System.out.println("Veuillez faire une action entre : (mettre les actions )");
+				System.out.println("Veuillez faire une action entre : (manger, son, soin, dormir, vieillir, pond, nager, )");
 				break;
 			case "Nymphe":
-				System.out.println("Veuillez faire une action entre : (mettre les actions )");
+				System.out.println("Veuillez faire une action entre : (manger, son, soin, dormir, vieillir, renaitre, accoucher )");
 				break;
 			case "Phoenix":
-				System.out.println("Veuillez faire une action entre : (mettre les actions )");
+				System.out.println("Veuillez faire une action entre : (manger, son, soin, dormir, vieillir, pond, renaitre, voler, )");
 				break;
 			case "Sirene":
-				System.out.println("Veuillez faire une action entre : (mettre les actions )");
+				System.out.println("Veuillez faire une action entre : (manger, son, soin, dormir, vieillir, nager, accoucher )");
 				break;
 			}
 			String action = sc.nextLine();
