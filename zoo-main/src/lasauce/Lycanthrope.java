@@ -12,17 +12,14 @@ public class Lycanthrope extends meute {
     private int sante;
     private boolean courrir;
     private boolean accoucher;
+    private int force;
+    private int dominationsExercees;
+    private int dominationsSubies;
 
 
- // Constructeur pour initialiser les attributs du Lycanthrope
-    public Lycanthrope(String nomEspece, String sexe, double poids, double taille) {
-        this.nomEspece = nomEspece;
-        this.sexe = sexe;
-        this.poids = poids;
-        this.taille = taille;
-        this.age = age;
-    }
 
+
+ 
 
  // fonction pour simuler l'action de manger 
     public void manger() {
@@ -97,6 +94,46 @@ public class Lycanthrope extends meute {
             System.out.println(nomEspece + "N'est pas entrain d'accouché'");
         }
     }
+    
+ // Constructeur pour initialiser les attributs du Lycanthrope
+    public Lycanthrope(String nomEspece, String sexe, double poids, double taille) {
+        this.nomEspece = nomEspece;
+        this.sexe = sexe;
+        this.poids = poids;
+        this.taille = taille;
+        this.age = age;
+        this.force = genererForce(); 
+    }
+    
+    public void interagirAvec(Lycanthrope lycanthrope1, Lycanthrope lycanthrope2) {
+        // Comparaison de la force du premier lycanthrope avec celle du deuxième
+        if (lycanthrope1.getForce() > lycanthrope2.getForce()) {
+            lycanthrope1.augmenterDominationsExercees();
+            lycanthrope2.augmenterDominationsSubies();
+        } else if (lycanthrope1.getForce() < lycanthrope2.getForce()) {
+            lycanthrope2.augmenterDominationsExercees();
+            lycanthrope1.augmenterDominationsSubies();
+        }
+    }
+
+
+    
+    public int calculerFacteurDomination() {
+        return dominationsExercees - dominationsSubies;
+    }
+    public void augmenterDominationsExercees() {
+        dominationsExercees++;
+    }
+
+    public void augmenterDominationsSubies() {
+        dominationsSubies++;
+    }
+
+
+    
+    
+    
+
 
 
 	public String getNomEspece() {
@@ -151,7 +188,9 @@ public class Lycanthrope extends meute {
 	    }
 	}
 
-
+	private int genererForce() {
+        return (int)(Math.random() * 10) + 1;
+    }
 
 	public void setAge(int age) {
 		this.age = age;
@@ -206,5 +245,9 @@ public class Lycanthrope extends meute {
 	public void setAccoucher(boolean accoucher) {
 		this.accoucher = accoucher;
 	}
+	public int getForce() {
+	    return force;
+	}
+
 
 }
