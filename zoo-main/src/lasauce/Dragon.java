@@ -43,7 +43,7 @@ public class Dragon {
         } 
         else if (faim < 90) {
         	faim += 10;
-        	Systeme.out.prinln(nomEsece + " a récupérer 10 de faim");
+        	System.out.prinln(nomEspece + " a récupérer 10 de faim ");
         	
         }else {
             System.out.println(nomEspece + "ne peut pas manger car sa santé est déjà au maximum. ");
@@ -53,7 +53,7 @@ public class Dragon {
 
         // fonction pour simuler l'action de faire du bruit 
     public void son() {
-        System.out.println(nomEspece + "Est entrain de rugir");
+        System.out.println(nomEspece + "Est entrain de rugir ");
     }
 
  // fonction pour simuler l'action de se soigner
@@ -102,7 +102,7 @@ public class Dragon {
     // fonction pour simuler l'action de pondre
     public void pond() {
         if (pond == true) {
-            System.out.println(nomEspece + "Est entrain de pondre");
+            System.out.println(nomEspece + "Est entrain de pondre ");
         }
         else if (pond == false) {
             System.out.println(nomEspece + "N'est pas entrain de pondre ");
