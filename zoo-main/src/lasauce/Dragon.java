@@ -9,8 +9,8 @@ public class Dragon {
     private double poids;
     private double taille;
     private int age;
-    private boolean faim;
-    private boolean dort;
+    private int faim;
+    private int dort;
     private int sante;
     private boolean courrir;
     private boolean nager;
@@ -25,14 +25,7 @@ public class Dragon {
         this.poids = poids;
         this.taille = taille;
         this.age = age;
-        this.faim = false;
-        this.dort = false;
-        this.sante = 100;
-        this.courrir = courrir;
-        this.nager = nager;
-        this.voler = voler;
-        this.pond = pond;
-        this.renaitre = renaitre;
+
     }
 
  // fonction pour simuler l'action de manger 
@@ -42,14 +35,15 @@ public class Dragon {
             System.out.println(nomEspece + " mange et gagne de la vie. ");
         } 
         else if (faim < 90) {
-        	faim += 10;
-        	System.out.prinln(nomEspece + " a récupérer 10 de faim ");
+        	this.faim += 10;
+        	System.out.println(nomEspece + " a récupérer 10 de faim ");
         	
         }else {
             System.out.println(nomEspece + "ne peut pas manger car sa santé est déjà au maximum. ");
         }
-        
+    }
 
+        
 
         // fonction pour simuler l'action de faire du bruit 
     public void son() {
@@ -79,13 +73,13 @@ public class Dragon {
         else {
             System.out.println(nomEspece + " ne dort pas car sa santé est déjà au maximum. ");
         }
-    }}
+    }
 
     
- // fonction pour simuler l'action de vieillir
+    // fonction pour simuler l'action de vieillir
     public void vieillir() {
         age++;
-        System.out.println((nomEspece + "Vieillis ")++i);
+        System.out.println((nomEspece + "Vieillis "));
 
     }
 
@@ -111,7 +105,7 @@ public class Dragon {
     // fonction pour simuler l'action de renaitre
     public void renaitre(Dragon listeMort, Dragon listeVivant){
     	listeVivant.add(listeMort[0]);
-    	Systeme.out.println(nomEspece + "Est entrain de renaitre ");
+    	System.out.println(nomEspece + "Est entrain de renaitre ");
     }
 
     // fonction pour simuler l'action de nager 
@@ -133,137 +127,108 @@ public class Dragon {
         }
     }
 
-
 	public String getNomEspece() {
 		return nomEspece;
 	}
-
 
 	public void setNomEspece(String nomEspece) {
 		this.nomEspece = nomEspece;
 	}
 
-
 	public String getSexe() {
 		return sexe;
 	}
-
 
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
 	}
 
-
 	public double getPoids() {
 		return poids;
 	}
-
 
 	public void setPoids(double poids) {
 		this.poids = poids;
 	}
 
-
 	public double getTaille() {
 		return taille;
 	}
-
 
 	public void setTaille(double taille) {
 		this.taille = taille;
 	}
 
-
 	public int getAge() {
 		return age;
 	}
-
 
 	public void setAge(int age) {
 		this.age = age;
 	}
 
-
-	public boolean isFaim() {
+	public int getFaim() {
 		return faim;
 	}
 
-
-	public void setFaim(boolean faim) {
+	public void setFaim(int faim) {
 		this.faim = faim;
 	}
 
-
-	public boolean isDort() {
+	public int getDort() {
 		return dort;
 	}
 
-
-	public void setDort(boolean dort) {
+	public void setDort(int dort) {
 		this.dort = dort;
 	}
-
 
 	public int getSante() {
 		return sante;
 	}
 
-
 	public void setSante(int sante) {
 		this.sante = sante;
 	}
-
 
 	public boolean isCourrir() {
 		return courrir;
 	}
 
-
 	public void setCourrir(boolean courrir) {
 		this.courrir = courrir;
 	}
-
 
 	public boolean isNager() {
 		return nager;
 	}
 
-
 	public void setNager(boolean nager) {
 		this.nager = nager;
 	}
-
 
 	public boolean isVoler() {
 		return voler;
 	}
 
-
 	public void setVoler(boolean voler) {
 		this.voler = voler;
 	}
-
 
 	public boolean isPond() {
 		return pond;
 	}
 
-
 	public void setPond(boolean pond) {
 		this.pond = pond;
 	}
-
 
 	public boolean isRenaitre() {
 		return renaitre;
 	}
 
-
 	public void setRenaitre(boolean renaitre) {
 		this.renaitre = renaitre;
 	}
 
-
-
-}
 }
