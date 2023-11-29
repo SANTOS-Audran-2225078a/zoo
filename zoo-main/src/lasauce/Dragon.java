@@ -1,6 +1,7 @@
 package lasauce;
-
+// création de la classe dragon une créature mythique
 public class Dragon {
+    // attributs du dragon
     private String nomEspece;
     private String sexe;
     private double poids;
@@ -15,7 +16,7 @@ public class Dragon {
     private boolean pond;
     private boolean renaitre;
 
-
+// Constructeur pour initialiser les attributs du dragon
     public Dragon(String nomEspece, String sexe, double poids, double taille) {
         this.nomEspece = nomEspece;
         this.sexe = sexe;
@@ -32,7 +33,7 @@ public class Dragon {
         this.renaitre = renaitre;
     }
 
-
+// fonction pour simuler l'action de manger 
     public void manger() {
         if (dort==false) {
             System.out.println(nomEspece + "Est entrain de manger");
@@ -44,11 +45,11 @@ public class Dragon {
     }
 
 
-
+// fonction pour simuler l'action de faire du bruit 
     public void son() {
         System.out.println(nomEspece + "Est entrain de rugir");
     }
-
+// fonction pour simuler l'action de se soigner
     public void soin() {
         if (sante !=100) {
             System.out.println(nomEspece + "Est entrain de se soigner");
@@ -59,7 +60,7 @@ public class Dragon {
         }
 
     }
-
+// fonction pour simuler l'action de dormir
     public void dormir() {
         if (dort==true) {
             System.out.println(nomEspece + "Est entrain de dormir");
@@ -68,12 +69,13 @@ public class Dragon {
             System.out.println(nomEspece + "Ne dort pas");
         }
     }
+    // fonction pour simuler l'action de vieillir
     public void vieillir() {
         age++;
         System.out.println((nomEspece + "Vieillis")++i);
 
     }
-
+// fonction pour simuler l'action de courrir
     public void courrir() {
         if (courrir==true) {
             System.out.println(nomEspece + "Est entrain de courrir");
@@ -83,7 +85,7 @@ public class Dragon {
         }
     }
 
-
+// fonction pour simuler l'action de pondre
     public void pond() {
         if (pond == true) {
             System.out.println(nomEspece + "Est entrain de pondre");
@@ -92,7 +94,7 @@ public class Dragon {
             System.out.println(nomEspece + "N'est pas entrain de pondre");
         }
     }
-
+// fonction pour simuler l'action de renaitre
     public void renaitre(){
         if (renaitre == true) {
             System.out.println(nomEspece + "Est entrain de renaitre");
@@ -101,7 +103,7 @@ public class Dragon {
             System.out.println(nomEspece + "Ne peut actuellement pas renaitre");
         }
     }
-
+// fonction pour simuler l'action de nager 
     public void nager() {
         if (nager==true) {
             System.out.println(nomEspece + "Est entrain de nager");
@@ -110,7 +112,7 @@ public class Dragon {
             System.out.println(nomEspece + "Ne nage pas");
         }
     }
-
+// fonction pour simuler l'action de voler 
     public void voler() {
         if (voler==true) {
             System.out.println(nomEspece + "Est entrain de voler");

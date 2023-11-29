@@ -1,6 +1,7 @@
 package lasauce;
-
+//création de la classe Megalodon une créature mythique
 public class Megalodon {
+    // attributs du Megalodon
     private String nomEspece;
     private String sexe;
     private double poids;
@@ -12,7 +13,7 @@ public class Megalodon {
     private boolean nager;
     private boolean pond;
 
-
+// Constructeur pour initialiser les attributs du Megalodon
     public Megalodon(String nomEspece, String sexe, double poids, double taille) {
         this.nomEspece = nomEspece;
         this.sexe = sexe;
@@ -26,7 +27,7 @@ public class Megalodon {
         this.pond = pond;
     }
 
-
+    // fonction pour simuler l'action de manger 
     public void manger() {
         if (dort==false) {
             System.out.println(nomEspece + "Est entrain de manger");
@@ -38,11 +39,11 @@ public class Megalodon {
     }
 
 
-
+    // fonction pour simuler l'action de faire du bruit
     public void son() {
         System.out.println(nomEspece + "Est entrain de rugir");
     }
-
+    // fonction pour simuler l'action de se soigner
     public void soin() {
         if (sante !=100) {
             System.out.println(nomEspece + "Est entrain de se soigner");
@@ -53,7 +54,7 @@ public class Megalodon {
         }
 
     }
-
+    // fonction pour simuler l'action de dormir
     public void dormir() {
         if (dort==true) {
             System.out.println(nomEspece + "Est entrain de dormir");
@@ -62,13 +63,14 @@ public class Megalodon {
             System.out.println(nomEspece + "Ne dort pas");
         }
     }
+    // fonction pour simuler l'action de vieillir
     public void vieillir() {
         age++;
         System.out.println((nomEspece + "Vieillis")++i);
 
     }
 
-
+    // fonction pour simuler l'action de pondre
     public void pond() {
         if (pond == true) {
             System.out.println(nomEspece + "Est entrain de pondre");
@@ -77,7 +79,7 @@ public class Megalodon {
             System.out.println(nomEspece + "N'est pas entrain de pondre");
         }
     }
-
+    // fonction pour simuler l'action de nager
     public void nager() {
         if (nager==true) {
             System.out.println(nomEspece + "Est entrain de nager");

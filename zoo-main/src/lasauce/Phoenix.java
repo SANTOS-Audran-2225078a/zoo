@@ -1,6 +1,7 @@
 package lasauce;
-
+//création de la classe Phoenix une créature mythique
 public class Phoenix {
+	// attributs du Phoenix
 	private String nomEspece;
 	private String sexe;
 	private double poids;
@@ -13,7 +14,7 @@ public class Phoenix {
 	private boolean pond;
 	private boolean renaitre;
 
-
+// Constructeur pour initialiser les attributs du Phoenix
 	public Phoenix(String nomEspece, String sexe, double poids, double taille) {
 		this.nomEspece = nomEspece;
 		this.sexe = sexe;
@@ -28,7 +29,7 @@ public class Phoenix {
 		this.renaitre = renaitre;
 	}
 
-
+	// fonction pour simuler l'action de manger 
 	public void manger() {
 		if (dort==false) {
 			System.out.println(nomEspece + "Est entrain de manger");
@@ -40,11 +41,11 @@ public class Phoenix {
 	}
 
 
-
+	// fonction pour simuler l'action de faire du bruit
 	public void son() {
 		System.out.println(nomEspece + "Est entrain de rugir");
 	}
-
+	// fonction pour simuler l'action de se soigner
 	public void soin() {
 		if (sante !=100) {
 			System.out.println(nomEspece + "Est entrain de se soigner");
@@ -55,7 +56,7 @@ public class Phoenix {
 		}
 
 	}
-
+	// fonction pour simuler l'action de dormir
 	public void dormir() {
 		if (dort==true) {
 			System.out.println(nomEspece + "Est entrain de dormir");
@@ -64,6 +65,7 @@ public class Phoenix {
 			System.out.println(nomEspece + "Ne dort pas");
 		}
 	}
+	// fonction pour simuler l'action de vieillir
 	 public void vieillir() {
         age++;
         System.out.println((nomEspece + "Vieillis")++i);
@@ -71,7 +73,7 @@ public class Phoenix {
     }
 
 
-
+	// fonction pour simuler l'action de pondre
 	public void pond() {
 		if (pond == true) {
 			System.out.println(nomEspece + "Est entrain de pondre");
@@ -80,7 +82,7 @@ public class Phoenix {
 			System.out.println(nomEspece + "N'est pas entrain de pondre");
 		}
 	}
-
+	// fonction pour simuler l'action de renaitre
 	public void renaitre(){
 		if (renaitre == true) {
 			System.out.println(nomEspece + "Est entrain de renaitre");
@@ -89,7 +91,7 @@ public class Phoenix {
 			System.out.println(nomEspece + "Ne peut actuellement pas renaitre");
 		}
 	}
-
+	// fonction pour simuler l'action de voler
 	public void voler() {
 		if (voler==true) {
 			System.out.println(nomEspece + "Est entrain de voler");

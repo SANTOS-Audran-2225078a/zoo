@@ -1,6 +1,7 @@
 package lasauce;
-
+//création de la classe kraken une créature mythique
 public class Kraken {
+    // attributs du Kraken
     private String nomEspece;
     private String sexe;
     private double poids;
@@ -13,7 +14,7 @@ public class Kraken {
     private boolean pond;
 
 
-
+// Constructeur pour initialiser les attributs du Kraken
     public Kraken(String nomEspece, String sexe, double poids, double taille) {
         this.nomEspece = nomEspece;
         this.sexe = sexe;
@@ -27,7 +28,7 @@ public class Kraken {
         this.pond = pond;
     }
 
-
+    // fonction pour simuler l'action de manger 
     public void manger() {
         if (dort==false) {
             System.out.println(nomEspece + "Est entrain de manger");
@@ -39,11 +40,11 @@ public class Kraken {
     }
 
 
-
+    // fonction pour simuler l'action de faire du bruit
     public void son() {
         System.out.println(nomEspece + "Est entrain de rugir");
     }
-
+    // fonction pour simuler l'action de se soigner
     public void soin() {
         if (sante !=100) {
             System.out.println(nomEspece + "Est entrain de se soigner");
@@ -54,7 +55,7 @@ public class Kraken {
         }
 
     }
-
+    // fonction pour simuler l'action de dormir
     public void dormir() {
         if (dort==true) {
             System.out.println(nomEspece + "Est entrain de dormir");
@@ -63,12 +64,13 @@ public class Kraken {
             System.out.println(nomEspece + "Ne dort pas");
         }
     }
+    // fonction pour simuler l'action de vieillir
     public void vieillir() {
         age++;
         System.out.println((nomEspece + "Vieillis")++i);
 
     }
-
+    // fonction pour simuler l'action de pondre
     public void pond() {
         if (pond == true) {
             System.out.println(nomEspece + "Est entrain de pondre");
@@ -78,7 +80,7 @@ public class Kraken {
         }
     }
 
-
+    // fonction pour simuler l'action de nager
     public void nager() {
         if (nager==true) {
             System.out.println(nomEspece + "Est entrain de nager");
@@ -88,7 +90,7 @@ public class Kraken {
         }
     }
 
-
+    
 	public String getNomEspece() {
 		return nomEspece;
 	}

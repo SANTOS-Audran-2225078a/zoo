@@ -1,6 +1,7 @@
 package lasauce;
-
+//création de la classe Licorne une créature mythique
 public class Licorne {
+	// attributs de la Licorne
     private String nomEspece;
     private String sexe;
     private double poids;
@@ -12,7 +13,7 @@ public class Licorne {
     private boolean courrir;
     private boolean accoucher;
 
-   
+   // Constructeur pour initialiser les attributs de le Licorne
     public Licorne(String nomEspece, String sexe, double poids, double taille, int age) {
         this.nomEspece = nomEspece;
         this.sexe = sexe;
@@ -26,7 +27,7 @@ public class Licorne {
         this.accoucher = accoucher;
     }
 
-
+	// fonction pour simuler l'action de manger 
 	public void manger() {
 		if (dort==false) {
 			System.out.println(nomEspece + "Est entrain de manger");
@@ -38,11 +39,11 @@ public class Licorne {
 	}
 
 
-
+	// fonction pour simuler l'action de faire du bruit 
 	public void son() {
 		System.out.println(nomEspece + "Est entrain de rugir");
 	}
-	
+	// fonction pour simuler l'action de se soigner
 	public void soin() {
 		if (sante !=100) {
 		System.out.println(nomEspece + "Est entrain de se soigner");
@@ -53,7 +54,7 @@ public class Licorne {
 		}
 		
 	}
-	
+	// fonction pour simuler l'action de dormir
 	public void dormir() {
 		if (dort==true) {
 		System.out.println(nomEspece + "Est entrain de dormir");
@@ -62,12 +63,13 @@ public class Licorne {
 			System.out.println(nomEspece + "Ne dort pas");
 		}
 	}
+	// fonction pour simuler l'action de vieillir
 	 public void vieillir() {
         age++;
         System.out.println((nomEspece + "Vieillis")++i);
 
     }
-	
+	// fonction pour simuler l'action de dourir
 	public void courrir() {
 		if (courrir==true) {
 			System.out.println(nomEspece + "Est entrain de courrir");
@@ -77,7 +79,7 @@ public class Licorne {
 		}
 	}
 	
-
+	// fonction pour simuler l'action d'accoucher
 	public void accoucher() {
 		if (accoucher == true) {
 			System.out.println(nomEspece + "Est entrain d'accouché");
