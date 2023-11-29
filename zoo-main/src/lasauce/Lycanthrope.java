@@ -1,6 +1,6 @@
 package lasauce;
 //création de la classe Lycanthrope une créature mythique
-public class Lycanthrope {
+public class Lycanthrope extends meute {
 	  // attributs du Lycanthrope
     private String nomEspece;
     private String sexe;
@@ -139,9 +139,18 @@ public class Lycanthrope {
 	}
 
 
-	public int getAge() {
-		return age;
+	public String getAge() {
+	    if (age >= 0 && age <= 100) {
+	        return "Jeune";
+	    } else if (age >= 101 && age <= 300) {
+	        return "Adulte";
+	    } else if (age >= 301 && age <= 370) {
+	        return "Vieux";
+	    } else {
+	        return "Âge inconnu";
+	    }
 	}
+
 
 
 	public void setAge(int age) {
