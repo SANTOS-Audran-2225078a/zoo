@@ -15,7 +15,7 @@ public class Lycanthrope extends meute {
     private int force;
     private int dominationsExercees;
     private int dominationsSubies;
-    private int ranng;
+    private String  rang;
     private int impetuosite;
     private Meute meute;
 
@@ -27,6 +27,7 @@ public class Lycanthrope extends meute {
         this.taille = taille;
         this.age = age;
         this.force = genererForce(); 
+        this.rang = rang;
     }
     // fonction pour simuler l'action de manger 
     public void manger() {
@@ -137,9 +138,89 @@ public class Lycanthrope extends meute {
     System.out.println("Rang : " + rang);
     System.out.println("FacteurDomination : " + FacteurDomination);
     System.out.println("Impetuosite : " + impetuosite);
-    System.out.println("Meute : " + meute);
+    System.out.println("Meute : " + (meute != null ? "Appartient à une meute" : "Solitaire"));
 }
 
+    	private int genererForce() {
+        return (int)(Math.random() * 10) + 1;
+    }
+
+    public int calculerNiveau() {
+    int valeurAge = convertirAgeEnValeur();
+    int niveau = valeurAge + this.force + calculerFacteurDomination() + this.rang;
+    return niveau;
+    }
+
+    public void hurler() {
+    System.out.println(nomEspece + " hurle.");
+    if (sante < 20) {
+        System.out.println(nomEspece + " hurle faiblement, montrant sa faiblesse.");
+    } else if (impetuosite > 8) {
+        System.out.println(nomEspece + " pousse un hurlement fort et impétueux.");
+    } else if (meute != null) {
+        System.out.println(nomEspece + " hurle pour communiquer avec sa meute.");
+    } else {
+        System.out.println(nomEspece + " pousse un hurlement solitaire.");
+    }
+    }
+
+    public void entendreHurlement() {
+    if (!dort && sante >= 50) {
+        System.out.println(nomEspece + " entend un hurlement.");
+        if (meute != null) {
+            System.out.println(nomEspece + " se prépare à rejoindre sa meute en réponse au hurlement.");
+        } else {
+            System.out.println(nomEspece + " est attentif et cherche la source du hurlement.");
+        }
+        if (impetuosite > 7) {
+            System.out.println(nomEspece + " répond par un hurlement fort, marquant son territoire.");
+        }
+
+    } else {
+        System.out.println(nomEspece + " ne réagit pas au hurlement.");
+    }
+    }
+
+    public void quitterMeute() {
+    meute = null;
+    System.out.println(nomEspece + " quitte sa meute.");
+
+    public void seTransformerEnHumain() {
+    System.out.println(nomEspece + " se transforme en humain.");
+    sante = Math.max(sante - 30, 0);
+    faim = Math.max(faim - 20, 0);
+    System.out.println(nomEspece + " perd de la santé et de la faim à cause de la transformation.");
+    dormir();
+    }
+
+    public void tenterDomination(Lycanthrope cible) {
+    if (this == meute.getFemelleAlpha()) {
+        System.out.println(nomEspece + " ne peut pas être dominée.");
+        return;
+    }
+
+    if (this.impetuosite > cible.getImpetuosite() && (this.force >= cible.getForce() || cible.getRang().equals("ω"))) {
+        accomplirDomination(cible);
+    } else {
+        System.out.println(nomEspece + " n'a pas réussi à dominer " + cible.getNomEspece());
+        cible.reagirAgression(this);
+    }
+    }
+
+    private void accomplirDomination(Lycanthrope cible) {
+    String ancienRang = this.rang;
+    this.rang = cible.getRang();
+    cible.setRang(ancienRang);
+
+    this.augmenterDominationsExercees();
+    cible.augmenterDominationsSubies();
+
+    System.out.println(nomEspece + " a dominé " + cible.getNomEspece() + " et échangé les rangs.");
+    }
+
+    private void reagirAgression(Lycanthrope agresseur) {
+    System.out.println(nomEspece + " réagit agressivement à la tentative de domination de " + agresseur.getNomEspece());
+    }
 
 
 
@@ -196,57 +277,6 @@ public class Lycanthrope extends meute {
 	    }
 	}
 
-	private int genererForce() {
-        return (int)(Math.random() * 10) + 1;
-    }
-
-    public int calculerNiveau() {
-    int valeurAge = convertirAgeEnValeur();
-    int niveau = valeurAge + this.force + calculerFacteurDomination() + this.rang;
-    return niveau;
-    }
-
-    public void hurler() {
-    System.out.println(nomEspece + " hurle.");
-    if (sante < 20) {
-        System.out.println(nomEspece + " hurle faiblement, montrant sa faiblesse.");
-    } else if (impetuosite > 8) {
-        System.out.println(nomEspece + " pousse un hurlement fort et impétueux.");
-    } else if (meute != null) {
-        System.out.println(nomEspece + " hurle pour communiquer avec sa meute.");
-    } else {
-        System.out.println(nomEspece + " pousse un hurlement solitaire.");
-    }
-    }
-
-    public void entendreHurlement() {
-    if (!dort && sante >= 50) {
-        System.out.println(nomEspece + " entend un hurlement.");
-        if (meute != null) {
-            System.out.println(nomEspece + " se prépare à rejoindre sa meute en réponse au hurlement.");
-        } else {
-            System.out.println(nomEspece + " est attentif et cherche la source du hurlement.");
-        }
-        if (impetuosite > 7) {
-            System.out.println(nomEspece + " répond par un hurlement fort, marquant son territoire.");
-        }
-
-    } else {
-        System.out.println(nomEspece + " ne réagit pas au hurlement.");
-    }
-    }
-
-    public void quitterMeute() {
-    meute = null;
-    System.out.println(nomEspece + " quitte sa meute.");
-
-    public void seTransformerEnHumain() {
-    System.out.println(nomEspece + " se transforme en humain.");
-    sante = Math.max(sante - 30, 0);
-    faim = Math.max(faim - 20, 0);
-    System.out.println(nomEspece + " perd de la santé et de la faim à cause de la transformation.");
-    dormir();
-}
 
 
 
@@ -307,9 +337,10 @@ public class Lycanthrope extends meute {
 	public int getForce() {
 	    return force;
 	}
-    public int getRang() {
+    public String getRang() {
     return rang;
     }
+
     public int getImpetuosite() {
     return impetuosite;
     }
@@ -319,9 +350,10 @@ public class Lycanthrope extends meute {
     }
 
 
-    public void setRang(int rang) {
+    public void setRang(String rang) {
     this.rang = rang;
-    }
+}
+
     public Meute getMeute() {
     return meute;
     }
