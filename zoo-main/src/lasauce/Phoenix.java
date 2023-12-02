@@ -31,20 +31,27 @@ public class Phoenix {
 
 	// fonction pour simuler l'action de manger 
 	public void manger() {
-		if (dort==false) {
-			System.out.println(nomEspece + "Est entrain de manger");
-		}
-		else if (dort==true) {
-			System.out.println(nomEspece + "ne peut pas manger pour le moment");
-		}
+        if (sante < 95) {
+            sante += 5;
+            System.out.println(nomEspece + " mange et gagne de la vie. ");
+        }
+        else if (faim < 90) {
+            this.faim += 10;
+            System.out.println(nomEspece + " a récupérer 10 de faim ");
 
-	}
+        }else {
+            System.out.println(nomEspece + "ne peut pas manger car sa santé est déjà au maximum. ");
+        }
+    }
 
 
 	// fonction pour simuler l'action de faire du bruit
 	public void son() {
-		System.out.println(nomEspece + "Est entrain de rugir");
-	}
+    if (faim < 50) {
+        System.out.println(nomEspece + " est entrain de rugir de faim ! Il est temps de lui donner à manger.");
+    }
+}
+
 	// fonction pour simuler l'action de se soigner
 	public void soin() {
 		if (sante !=100) {
@@ -56,19 +63,25 @@ public class Phoenix {
 		}
 
 	}
+
 	// fonction pour simuler l'action de dormir
 	public void dormir() {
-		if (dort==true) {
-			System.out.println(nomEspece + "Est entrain de dormir");
-		}
-		else if (dort == false) {
-			System.out.println(nomEspece + "Ne dort pas");
-		}
-	}
+    if (sante < 20) {
+        sante = Math.min(sante + 10, 100);
+        System.out.println(nomEspece + " est très faible et dort automatiquement pour récupérer. ");
+    }
+    else if (sante < 100) {
+        System.out.println(nomEspece + " est entrain de dormir. ");
+    }
+    else {
+        System.out.println(nomEspece + " ne dort pas car sa santé est déjà au maximum. ");
+    }
+}
+
 	// fonction pour simuler l'action de vieillir
 	 public void vieillir() {
         age++;
-        System.out.println((nomEspece + "Vieillis")++i);
+        System.out.println((nomEspece + "Vieillis"));
 
     }
 
@@ -83,23 +96,25 @@ public class Phoenix {
 		}
 	}
 	// fonction pour simuler l'action de renaitre
-	public void renaitre(){
-		if (renaitre == true) {
-			System.out.println(nomEspece + "Est entrain de renaitre");
-		}
-		else if (renaitre == false) {
-			System.out.println(nomEspece + "Ne peut actuellement pas renaitre");
-		}
-	}
+	public void renaitre(Dragon listeMort, Dragon listeVivant){
+        listeVivant.add(listeMort[0]);
+        System.out.println(nomEspece + "Est entrain de renaitre ");
+    }
+
 	// fonction pour simuler l'action de voler
 	public void voler() {
-		if (voler==true) {
-			System.out.println(nomEspece + "Est entrain de voler");
-		}
-		else if (voler==false) {
-			System.out.println(nomEspece + "Ne vole pas");
-		}
-	}
+    if (voler) {
+        System.out.println(nomEspece + " est entrain de voler et fait une activité physique.");
+        sante = Math.min(sante + 10, 100);
+        faim = Math.max(faim - 2, 0);
+        if (sante == 100) {
+            voler = false;
+            System.out.println(nomEspece + " arrête de voler car sa santé est au maximum.");
+        }
+    } else {
+        System.out.println(nomEspece + " ne vole pas.");
+    }
+}
 
 
 	public String getNomEspece() {
