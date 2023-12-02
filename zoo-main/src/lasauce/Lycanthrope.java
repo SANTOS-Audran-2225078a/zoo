@@ -15,13 +15,20 @@ public class Lycanthrope extends meute {
     private int force;
     private int dominationsExercees;
     private int dominationsSubies;
+    private int ranng;
+    private int impetuosite;
+    private Meute meute;
 
-
-
-
- 
-
- // fonction pour simuler l'action de manger 
+ // Constructeur pour initialiser les attributs du Lycanthrope
+    public Lycanthrope(String nomEspece, String sexe, double poids, double taille) {
+        this.nomEspece = nomEspece;
+        this.sexe = sexe;
+        this.poids = poids;
+        this.taille = taille;
+        this.age = age;
+        this.force = genererForce(); 
+    }
+    // fonction pour simuler l'action de manger 
     public void manger() {
         if (sante < 95) {
             sante += 5;
@@ -36,11 +43,11 @@ public class Lycanthrope extends meute {
         }
     }
 
-
-
     public void son() {
-        System.out.println(nomEspece + "Est entrain de rugir");
+    if (faim < 50) {
+        System.out.println(nomEspece + " est entrain de rugir de faim ! Il est temps de lui donner à manger.");
     }
+}
 
     // fonction pour simuler l'action de se soigner
     public void soin() {
@@ -54,19 +61,17 @@ public class Lycanthrope extends meute {
 
     // fonction pour simuler l'action de dormir
     public void dormir() {
-        if (sante < 20) {
-        	
-            System.out.println(nomEspece + " est très faible et dort automatiquement pour récupérer. ");
-        }
-
-        else if (sante < 100) {
-            System.out.println(nomEspece + " est entrain de dormir. ");
-        }
-
-        else {
-            System.out.println(nomEspece + " ne dort pas car sa santé est déjà au maximum. ");
-        }
+    if (sante < 20) {
+        sante = Math.min(sante + 10, 100);
+        System.out.println(nomEspece + " est très faible et dort automatiquement pour récupérer. ");
     }
+    else if (sante < 100) {
+        System.out.println(nomEspece + " est entrain de dormir. ");
+    }
+    else {
+        System.out.println(nomEspece + " ne dort pas car sa santé est déjà au maximum. ");
+    }
+}
     
     
  // fonction pour simuler l'action de vieillir
@@ -77,13 +82,18 @@ public class Lycanthrope extends meute {
     }
 
     public void courrir() {
-        if (courrir==true) {
-            System.out.println(nomEspece + "Est entrain de courrir");
+    if (courrir) {
+        System.out.println(nomEspece + " est entrain de courir et fait une activité physique.");
+        sante = Math.min(sante + 10, 100);
+        faim = Math.max(faim - 2, 0);
+        if (sante == 100) {
+            courrir = false;
+            System.out.println(nomEspece + " arrête de courir car sa santé est au maximum.");
         }
-        else if (courrir==false) {
-            System.out.println(nomEspece + "Ne court pas");
-        }
+    } else {
+        System.out.println(nomEspece + " ne court pas.");
     }
+}
 
 
     public void accoucher() {
@@ -93,16 +103,6 @@ public class Lycanthrope extends meute {
         else if (accoucher == false) {
             System.out.println(nomEspece + "N'est pas entrain d'accouché'");
         }
-    }
-    
- // Constructeur pour initialiser les attributs du Lycanthrope
-    public Lycanthrope(String nomEspece, String sexe, double poids, double taille) {
-        this.nomEspece = nomEspece;
-        this.sexe = sexe;
-        this.poids = poids;
-        this.taille = taille;
-        this.age = age;
-        this.force = genererForce(); 
     }
     
     public void interagirAvec(Lycanthrope lycanthrope1, Lycanthrope lycanthrope2) {
@@ -116,8 +116,6 @@ public class Lycanthrope extends meute {
         }
     }
 
-
-    
     public int calculerFacteurDomination() {
         return dominationsExercees - dominationsSubies;
     }
@@ -128,11 +126,21 @@ public class Lycanthrope extends meute {
     public void augmenterDominationsSubies() {
         dominationsSubies++;
     }
+    public void afficherCaracteristiques() {
+    System.out.println("Nom de l'espèce : " + nomEspece);
+    System.out.println("Sexe : " + sexe);
+    System.out.println("Poids : " + poids);
+    System.out.println("Taille : " + taille);
+    System.out.println("Age : " + age);
+    System.out.println("Force : " + force);
+    System.out.println("Niveau : " + niveau);
+    System.out.println("Rang : " + rang);
+    System.out.println("FacteurDomination : " + FacteurDomination);
+    System.out.println("Impetuosite : " + impetuosite);
+    System.out.println("Meute : " + meute);
+}
 
 
-    
-    
-    
 
 
 
@@ -192,6 +200,57 @@ public class Lycanthrope extends meute {
         return (int)(Math.random() * 10) + 1;
     }
 
+    public int calculerNiveau() {
+    int valeurAge = convertirAgeEnValeur();
+    int niveau = valeurAge + this.force + calculerFacteurDomination() + this.rang;
+    return niveau;
+    }
+
+    public void hurler() {
+    System.out.println(nomEspece + " hurle.");
+    if (sante < 20) {
+        System.out.println(nomEspece + " hurle faiblement, montrant sa faiblesse.");
+    } else if (impetuosite > 8) {
+        System.out.println(nomEspece + " pousse un hurlement fort et impétueux.");
+    } else if (meute != null) {
+        System.out.println(nomEspece + " hurle pour communiquer avec sa meute.");
+    } else {
+        System.out.println(nomEspece + " pousse un hurlement solitaire.");
+    }
+    }
+
+    public void entendreHurlement() {
+    if (!dort && sante >= 50) {
+        System.out.println(nomEspece + " entend un hurlement.");
+        if (meute != null) {
+            System.out.println(nomEspece + " se prépare à rejoindre sa meute en réponse au hurlement.");
+        } else {
+            System.out.println(nomEspece + " est attentif et cherche la source du hurlement.");
+        }
+        if (impetuosite > 7) {
+            System.out.println(nomEspece + " répond par un hurlement fort, marquant son territoire.");
+        }
+
+    } else {
+        System.out.println(nomEspece + " ne réagit pas au hurlement.");
+    }
+    }
+
+    public void quitterMeute() {
+    meute = null;
+    System.out.println(nomEspece + " quitte sa meute.");
+
+    public void seTransformerEnHumain() {
+    System.out.println(nomEspece + " se transforme en humain.");
+    sante = Math.max(sante - 30, 0);
+    faim = Math.max(faim - 20, 0);
+    System.out.println(nomEspece + " perd de la santé et de la faim à cause de la transformation.");
+    dormir();
+}
+
+
+
+
 	public void setAge(int age) {
 		this.age = age;
 	}
@@ -248,6 +307,28 @@ public class Lycanthrope extends meute {
 	public int getForce() {
 	    return force;
 	}
+    public int getRang() {
+    return rang;
+    }
+    public int getImpetuosite() {
+    return impetuosite;
+    }
+
+    public void setImpetuosite(int impetuosite) {
+    this.impetuosite = impetuosite;
+    }
+
+
+    public void setRang(int rang) {
+    this.rang = rang;
+    }
+    public Meute getMeute() {
+    return meute;
+    }
+
+    public void setMeute(Meute meute) {
+    this.meute = meute;
+    }
 
 
 }
