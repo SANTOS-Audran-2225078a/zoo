@@ -33,8 +33,7 @@ public class Meute {
 
     public void identifierLycanthropesOmega() {
         for (Lycanthrope lycanthrope : membres) {
-            // Supposons que les lycanthropes ω sont ceux dont la force est inférieure à un certain seuil
-            if (lycanthrope.getForce() < 3) { // Seuil hypothétique pour l'exemple
+            if (lycanthrope.getForce() < 3) {
                 lycanthrope.setRang("ω");
             }
         }
@@ -50,11 +49,9 @@ public class Meute {
     }
 
     public void gererPerteDeRang() {
-        // Supposons que la perte de rang se produit lorsque les dominations subies sont trop élevées
         for (Lycanthrope lycanthrope : membres) {
-            if (lycanthrope.getDominationsSubies() > 5) { // Seuil hypothétique pour l'exemple
-                // Réduire le rang ici
-                // ...
+            if (lycanthrope.getDominationsSubies() > 5) {
+
             }
         }
     }
@@ -67,5 +64,4 @@ public class Meute {
         return femelleAlpha;
     }
 
-    // Autres méthodes...
 }
