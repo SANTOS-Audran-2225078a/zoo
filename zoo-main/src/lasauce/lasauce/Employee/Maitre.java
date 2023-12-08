@@ -2,6 +2,7 @@ package lasauce.Employee;
 import java.util.Collections;
 import java.util.List;
 
+import lasauce.Loup.Lycanthrope;
 import lasauce.animaux.*;
 
 public class Maitre {
@@ -15,5 +16,8 @@ public class Maitre {
 		for(String elem : enclosOrdre) {
 			System.out.println(elem);
         }
+    }
+    public String getName() {
+        return nom;
     }
 }
