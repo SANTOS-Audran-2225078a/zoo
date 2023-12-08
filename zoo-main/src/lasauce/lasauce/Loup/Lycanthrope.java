@@ -3,6 +3,8 @@ package lasauce.Loup;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import lasauce.Employee.Maitre;
+
 //création de la classe Lycanthrope une créature mythique
 public class Lycanthrope extends Meute{
 	  // attributs du Lycanthrope
@@ -22,7 +24,6 @@ public class Lycanthrope extends Meute{
     private int dominationsSubies = 50;
     private String  rang;
     private int rangPower;
-    private int niveau = 1;
     private int impetuosite;
     private String meute;
     
@@ -55,6 +56,8 @@ public class Lycanthrope extends Meute{
     public void son(String nomEspece) {
     if (faim < 50) {
         System.out.println(nomEspece + " est entrain de rugir de faim ! Il est temps de lui donner à manger.");
+    } else {
+        System.out.println(nomEspece + " est entrain de rugir smrrrr");
     }
 }
     // fonction pour simuler l'action de se soigner
@@ -82,8 +85,6 @@ public class Lycanthrope extends Meute{
  // fonction pour simuler l'action de vieillir
     public void vieillir(String nomEspece) {
         age++;
-        System.out.println((nomEspece + "Vieillis "));
-
     }
     public void courrir(String nomEspece) {
         System.out.println(nomEspece + " est entrain de courir et fait une activité physique.");
@@ -107,14 +108,13 @@ public class Lycanthrope extends Meute{
     public int calculerNiveau() {
         return age + genererForce() + rangPower;
     }
-    public void mourrir(Lycanthrope lycanDead, List<Lycanthrope> listLycan ,List<Lycanthrope> listLycanDead) {
-        String nameToRemove = lycanDead.getNomEspece();
-        listLycan.remove(nameToRemove);
-        listLycanDead.add(lycanDead);
-        System.out.println("-------------");
-        System.out.println(lycanDead.getNomEspece() + " est mort ... ");
-        System.out.println("-------------");
-    }
+    //public void mourrir(Lycanthrope lycanDead, List<Lycanthrope> listLycan ,List<Lycanthrope> listLycanDead) {
+    //    listLycan.remove(lycanDead);
+    //    listLycanDead.add(lycanDead);
+    //    System.out.println("-------------");
+    //    System.out.println(lycanDead.getNomEspece() + " est mort ... ");
+    //    System.out.println("-------------");
+    //}
     public void seTransformerEnHumain() {
         
     }
@@ -143,16 +143,25 @@ public class Lycanthrope extends Meute{
 		    }
         }
     }
+        public void seTransformerEnHumain(List<Maitre> allMaitre, List<Lycanthrope> allLycan, Lycanthrope myLycan) {
+        Maitre newMaitre = new Maitre(myLycan.getNomEspece());
+        allLycan.remove(myLycan);
+        allMaitre.add(newMaitre);
+    }
     public void combatMort(Lycanthrope agresseur, Lycanthrope agressé,  List<Lycanthrope> listLycan ,List<Lycanthrope> listLycanDead) {
         System.out.println("-------------");
-        System.out.println(agresseur.getNomEspece() + " va lancer un combat à mort contre " + agressé.getNomEspece() + " ... ");
+        System.out.println(getNomEspece() + " va lancer un combat à mort contre " + agressé.getNomEspece() + " ... ");
         System.out.println("-------------");
-        if(agresseur.FacteurDomination() - agressé.FacteurDomination() < 0) {
+        if(FacteurDomination() - agressé.FacteurDomination() < 0) {
             try {
 			    TimeUnit.SECONDS.sleep(5);
 			    System.out.println("-------------");
-                System.out.println(agressé.getNomEspece() +  " le défenseur a tué " + agresseur.getNomEspece());
-                mourrir(agressé, listLycan, listLycanDead);
+                System.out.println(agressé.getNomEspece() +  " le défenseur a tué " + getNomEspece());
+                listLycan.remove(agresseur);
+                listLycanDead.add(agresseur);
+                System.out.println("-------------");
+                System.out.println(agresseur.getNomEspece() + " est mort ... ");
+                System.out.println("-------------");
 	        } catch (InterruptedException e) {
 			    System.err.format("IOException: %s%n", e);
 		    }
@@ -160,7 +169,12 @@ public class Lycanthrope extends Meute{
              try {
 			    TimeUnit.SECONDS.sleep(5);
 			    System.out.println("-------------");
-                System.out.println(agresseur.getNomEspece() +  " l'attaquant a tué " + agressé.getNomEspece());
+                System.out.println(getNomEspece() +  " l'attaquant a tué " + agressé.getNomEspece());
+                listLycan.remove(agresseur);
+                listLycanDead.add(agresseur);
+                System.out.println("-------------");
+                System.out.println(agresseur.getNomEspece() + " est mort ... ");
+                System.out.println("-------------");
 	        } catch (InterruptedException e) {
 			    System.err.format("IOException: %s%n", e);
 		    }
@@ -183,6 +197,12 @@ public class Lycanthrope extends Meute{
 	}
     public String getRangEspece() {
         return rang;
+    }
+    public int getRangPower() {
+        return rangPower;
+    }
+    public void getListeMort(String nom) {
+        System.out.println(nom);
     }
 
 
