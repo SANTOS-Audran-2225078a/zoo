@@ -68,8 +68,6 @@ public class Megalodon {
     // fonction pour simuler l'action de vieillir
     public void vieillir(String nomEspece) {
         age++;
-        System.out.println((nomEspece + "Vieillis"));
-
     }
     // fonction pour simuler l'action de nager
     public void nager(String nomEspece) {
