@@ -8,6 +8,7 @@ import lasauce.Enclos.Enclos;
 import lasauce.Loup.*;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -24,6 +25,24 @@ public class game {
 			System.err.format("IOException: %s%n", e);
 		}
 	}
+	public static void trierEtRestaurerLycanthropes(List<Lycanthrope> lycanthropes) {
+        // Sauvegarder l'état initial de la liste
+        List<Lycanthrope> listeInitiale = new ArrayList<>(lycanthropes);
+
+        // Trier la liste en fonction de rangPower
+        Collections.sort(lycanthropes, Comparator.comparingInt(Lycanthrope::getRangPower));
+
+        // Afficher la liste triée
+        System.out.println("Voici l'ordre des Lycanthrope selon leur catégorie ");
+        for (Lycanthrope lycanthrope : lycanthropes) {
+            System.out.println(lycanthrope.getNomEspece() + " - RangPower: " + lycanthrope.getRangPower());
+        }
+
+        // Restaurer la liste à son état initial
+        lycanthropes.clear();
+        lycanthropes.addAll(listeInitiale);
+
+    }
 	/**
 	 * 
 	 * @param args
@@ -55,7 +74,19 @@ public class game {
 		List<Nymphe> allNym = new ArrayList<Nymphe>();
 	    List<Phoenix> allPho = new ArrayList<Phoenix>();
 	    List<Sirene> allSi = new ArrayList<Sirene>();
-
+		Maitre maitreBase = new Maitre("Asuna");
+		List<Maitre> allMaitre = new ArrayList<Maitre>();
+		allMaitre.add(maitreBase);
+		Meute meuteGot = new Meute("Got");
+		Meute meuteOnePiece = new Meute("One Piece");
+		Meute meuteStarks = new Meute("Starks");
+		List<String> lycanMeuteGot = new ArrayList<String>();
+		List<String> lycanMeuteOnePiece = new ArrayList<String>();
+		List<String> lycanMeuteStarks = new ArrayList<String>();
+		List<Meute> nameAllMeute = new ArrayList<Meute>();
+		nameAllMeute.add(meuteGot);
+		nameAllMeute.add(meuteOnePiece);
+		nameAllMeute.add(meuteStarks);
 		// liste mort 
 		List<Lycanthrope> allLycanDead = new ArrayList<Lycanthrope>();
 
@@ -191,7 +222,7 @@ public class game {
 				break;
 			case "Lycanthrope":
 				System.out.println("-----------------------------------------");
-				System.out.println("Veuillez faire une action entre : (manger, son, soin, dormir, courrir, accoucher, infoLoup, dominer, combatMort, interragir)");
+				System.out.println("Veuillez faire une action entre : (manger, son, soin, dormir, courrir, accoucher, infoLoup, dominer, liste mort, combatMort, creerMeute, ajouterLycanMeute, voirMeute, voirLycanMeute, lycanPuissance, transformer)");
 				System.out.println("-----------------------------------------");
 				System.out.println("Ou à l'enclos");
 				System.out.println("modif enclos, nettoyerEnclos, donnee enclos, changer enclos");
@@ -234,7 +265,6 @@ public class game {
 			Scanner inp = new Scanner(System.in);
 		    String action = inp.nextLine();
 			clearScreen();
-			
 			switch(animal) {
 				case "Dragon":
 				  switch(action) {
@@ -577,7 +607,7 @@ public class game {
 						    for(Lycanthrope lycanToRun : allLycan) {lycanToRun.courrir(lycanToRun.getNomEspece());}
 							break;
 						case "accoucher":
-						 	System.out.println("Voici la liste des Sirenes : ");
+						 	System.out.println("Voici la liste des Lycanthropes : ");
 							for(Lycanthrope lycanToFuck : allLycan) {System.out.println(lycanToFuck.getNomEspece()+ "  "+ lycanToFuck.getSexe());}
 							System.out.println("Choisissez une, femelle : ");
 							Scanner inpB = new Scanner(System.in);
@@ -614,7 +644,88 @@ public class game {
 						case "infoLoup":
 						    for(Lycanthrope ly : allLycan) {ly.infoLoup();}
 							break;
-							
+						case "combatMort":
+							int attaquantMortRang = (int)(Math.random() * allLycan.size()-1);
+							int defenseurMortRang = (int)(Math.random() * allLycan.size()-1);
+							Lycanthrope lycanAttaquantMort = allLycan.get(attaquantMortRang);
+							Lycanthrope lycanDefenseurMort = allLycan.get(defenseurMortRang);
+							lycanAttaquantMort.combatMort(lycanAttaquantMort, lycanDefenseurMort, allLycan, allLycanDead);
+							break;
+						case "liste mort":
+						    for(Lycanthrope lycanDead : allLycanDead) {
+								lycanDead.getListeMort(lycanDead.getNomEspece());
+							}
+							break;
+						case "creerMeute":
+						    System.out.println("Veuillez choisir le nom de votre meute à créer : ");
+						    Scanner creer = new Scanner(System.in);
+		                    String newMeute = creer.nextLine();
+							nameAllMeute.add(new Meute(newMeute));
+							System.out.println("Voici toute les meutes : ");
+							for(Meute allMeute : nameAllMeute) {
+								System.out.println(allMeute.getAllMeuteName());
+							}
+						    break;
+						case "ajouterLycanMeute":
+							for(Meute allMeute : nameAllMeute) {
+								System.out.println(allMeute.getAllMeuteName());
+							}
+						    System.out.println("Dans quel meute rajouter l'animal? ");
+						    Scanner quelleMeute = new Scanner(System.in);
+		                    String meuteToAdd = quelleMeute.nextLine();
+							for(Lycanthrope allLycant : allLycan) {
+								System.out.println(allLycant.getNomEspece());
+							}
+							System.out.println("Quel Lycanthrope? ");
+						    Scanner quelLycan = new Scanner(System.in);
+		                    String lycanToAdd = quelLycan.nextLine();
+							switch(meuteToAdd) {
+								case "Got":
+								    lycanMeuteGot.add(lycanToAdd);
+									break;
+								case "One Piece":
+								    lycanMeuteOnePiece.add(lycanToAdd);
+									break;
+								case "Starks":
+								lycanMeuteStarks.add(lycanToAdd);
+								break;
+							}
+							System.out.println("Lycanthrope ajouté à la meute. ");
+							break;
+						case "voirMeute":
+							for(Meute allMeute : nameAllMeute) {
+								System.out.println(allMeute.getAllMeuteName());
+							}
+							break;
+					    case "voirLycanMeute":
+							System.out.println("-----------------------------------------");
+						    System.out.println("Voici les Lycanthropes de la meute Got : ");
+							for(String lycanM : lycanMeuteGot) {
+								System.out.println(lycanM);
+							}
+							System.out.println("-----------------------------------------");
+						    System.out.println("Voici les Lycanthropes de la meute One Piece : ");
+							for(String lycanM : lycanMeuteOnePiece) {
+								System.out.println(lycanM);
+							}
+							System.out.println("-----------------------------------------");
+							System.out.println("Voici les Lycanthropes de la meute Starks : ");
+							for(String lycanM : lycanMeuteStarks) {
+								System.out.println(lycanM);
+							}
+							System.out.println("-----------------------------------------");
+							break;
+						case "lycanPuissance":
+						    trierEtRestaurerLycanthropes(allLycan);
+							break;
+						case "transformer":
+						    int lycanS = (int)(Math.random() * allLycan.size()-1);
+				            System.out.println(allLycan.get(lycanS).getNomEspece() + " se transforme ... ");
+							allLycan.get(lycanS).seTransformerEnHumain(allMaitre, allLycan, allLycan.get(lycanS));
+							System.out.println("Maitre : " );
+							for(Maitre allMyMaitre : allMaitre) {
+								System.out.println(allMyMaitre.getName());
+							}
 					}
 			}
 			compteurAge += 1;
@@ -669,8 +780,29 @@ public class game {
 			} catch (InterruptedException e) {
 				System.err.format("IOException: %s%n", e);
 			}
-			
 		}
+		// Hurlement aléatoire + réponse 
+			int a = (int)(Math.random() * 6);
+			if(a == 4) {
+				int lycanS = (int)(Math.random() * allLycan.size()-1);
+				System.out.print(allLycan.get(lycanS).getNomEspece() + " de rang " + allLycan.get(lycanS).getRangEspece());
+				System.out.println("Pousse un crie...");
+				System.out.println("Les autres loups vont répondre...");
+		        for(Lycanthrope allLycant : allLycan) {
+					try {
+			    		TimeUnit.SECONDS.sleep(1);
+						if(allLycant.getRangPower() > allLycan.get(lycanS).getRangPower()) {
+							System.out.println(allLycant.getNomEspece() + " lache un cri de Domination !");
+						} else if (allLycant.getRangPower() == allLycan.get(lycanS).getRangPower()) {
+							System.out.println(allLycant.getNomEspece() + " répond au hurlement !");
+						} else {
+							System.out.println(allLycant.getNomEspece() + " fais un hurlement de soumission ! ");
+						}
+	 				} catch (InterruptedException e) {
+						System.err.format("IOException: %s%n", e);
+					}
+				}
+			}
 		switch(action) {
 				case "changer enclos":
 					System.out.println("-----------------------------------------");
@@ -737,7 +869,6 @@ public class game {
 				    dragEnclos.nettoyerEnclos();
 					System.out.println("-------------------------");
 					break;
-
 			}
 		}
 		
