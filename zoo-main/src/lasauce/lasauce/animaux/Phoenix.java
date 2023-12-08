@@ -72,8 +72,6 @@ public class Phoenix {
 	// fonction pour simuler l'action de vieillir
 	 public void vieillir(String nomEspece) {
         age++;
-        System.out.println((nomEspece + "Vieillis"));
-
     }
 
 	// fonction pour simuler l'action de voler
