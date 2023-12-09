@@ -152,7 +152,7 @@ public class Lycanthrope extends Meute{
         System.out.println("-------------");
         System.out.println(getNomEspece() + " va lancer un combat à mort contre " + agressé.getNomEspece() + " ... ");
         System.out.println("-------------");
-        if(FacteurDomination() - agressé.FacteurDomination() < 0) {
+        if((FacteurDomination()+ getRangPower()) - (agressé.FacteurDomination()+ getRangPower()) < 0) {
             try {
 			    TimeUnit.SECONDS.sleep(5);
 			    System.out.println("-------------");
@@ -170,10 +170,10 @@ public class Lycanthrope extends Meute{
 			    TimeUnit.SECONDS.sleep(5);
 			    System.out.println("-------------");
                 System.out.println(getNomEspece() +  " l'attaquant a tué " + agressé.getNomEspece());
-                listLycan.remove(agresseur);
-                listLycanDead.add(agresseur);
+                listLycan.remove(agressé);
+                listLycanDead.add(agressé);
                 System.out.println("-------------");
-                System.out.println(agresseur.getNomEspece() + " est mort ... ");
+                System.out.println(agressé.getNomEspece() + " est mort ... ");
                 System.out.println("-------------");
 	        } catch (InterruptedException e) {
 			    System.err.format("IOException: %s%n", e);
